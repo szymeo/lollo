@@ -1,0 +1,69 @@
+<script lang="ts">
+	import CrownIcon from '$lib/shared/icons/CrownIcon.svelte';
+	import { page } from '$app/state';
+	import '../app.css';
+
+	/** @type {{children: import('svelte').Snippet}} */
+	let { children } = $props();
+
+	const ROUTES = [
+		{ name: 'Champdle', href: '/' },
+		{ name: 'Champrades', href: '/champrades' },
+		// { name: 'Skilldle', href: '/skilldle' },
+	];
+</script>
+
+<div class="scrollable flex h-dvh flex-col overflow-auto">
+	<nav
+		class="sticky top-0 z-10 flex items-center justify-between border-t-4 border-amber-400 px-6"
+	>
+		<h1
+			class="relative flex w-fit items-center justify-center gap-2 py-4 text-3xl font-extrabold"
+		>
+			<CrownIcon
+				class="h-8 w-8"
+				fill="fill-amber-400"
+				stroke="stroke-amber-400"
+			/>
+			Lollo
+
+			<span
+				class="absolute top-3 left-full -ml-2.5 text-xs font-semibold text-amber-400"
+			>
+				alpha
+			</span>
+		</h1>
+
+		<div class="flex gap-6 font-semibold">
+			{#each ROUTES as { name, href }, i}
+				<a
+					{href}
+					class={[
+						'font-semibold',
+						{
+							'text-amber-400': page.url.pathname === href,
+							'text-gray-300 hover:text-white':
+								page.url.pathname !== href,
+						},
+					]}
+				>
+					{name}
+				</a>
+			{/each}
+		</div>
+	</nav>
+
+	<main class="flex-1 overflow-auto">
+		{@render children()}
+	</main>
+
+	<footer class="">
+		<p class="p-4 text-center text-[9px] tracking-normal text-gray-400">
+			Lollo is not endorsed by Riot Games and does not reflect the views
+			or opinions of Riot Games or anyone officially involved in producing
+			or managing Riot Games properties. Riot Games and all associated
+			properties are trademarks or registered trademarks of Riot Games,
+			Inc.
+		</p>
+	</footer>
+</div>

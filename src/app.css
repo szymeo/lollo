@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+html, body {
+  --font-sans: 'Overlock', sans-serif;
+  @apply bg-gray-950 text-gray-100 tracking-wide antialiased;
+}
+
+* {
+  @apply outline-0;
+}
+
+.scrollable::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+	@apply h-1 w-1 bg-transparent;
+	border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar {
+	@apply h-1 w-1 bg-transparent;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+	@apply h-1 w-1 rounded-full bg-amber-400;
+}
