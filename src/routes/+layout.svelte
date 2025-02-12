@@ -2,6 +2,7 @@
 	import CrownIcon from '$lib/shared/icons/CrownIcon.svelte';
 	import { page } from '$app/state';
 	import '../app.css';
+	import GithubIcon from '$lib/shared/icons/GithubIcon.svelte';
 
 	/** @type {{children: import('svelte').Snippet}} */
 	let { children } = $props();
@@ -50,6 +51,15 @@
 					{name}
 				</a>
 			{/each}
+
+			<a
+				href="https://github.com/szymeo/lollo"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-gray-300 hover:text-white"
+			>
+				<GithubIcon class="h-6 w-6" fill="fill-gray-300" />
+			</a>
 		</div>
 	</nav>
 

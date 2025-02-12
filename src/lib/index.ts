@@ -3,6 +3,6 @@ export * from './shared/types/AutocompleteRow';
 export * from './shared/types/LolChampion';
 export * from './shared/types/ChampionGuessingGameState';
 
-import { default as ChampionGuessingGame } from './champions/components/ChampionGuessingGame.svelte';
+import { default as ChampionGuessingGame } from './games/champdle/components/ChampionGuessingGame.svelte';
 export { ChampionGuessingGame };
 export * from './shared/api/riot/lol/riot-games-lol.api';
