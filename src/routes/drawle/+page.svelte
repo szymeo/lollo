@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import {
 		ChampionGuessingGame,
+		isDev,
 		type ChampionGuessingGameState,
 		type LolChampion,
 	} from '$lib';
@@ -12,8 +14,7 @@
 			game: ChampionGuessingGameState;
 		};
 	};
-	const { data }: Props = $props();
-	const isDev = false; //import.meta.env.MODE === 'development';
+	const roomId = page.url.searchParams.get('room');
 </script>
 
 <svelte:head>
@@ -24,8 +25,8 @@
 	/>
 </svelte:head>
 
-{#if isDev}
-	<DrawleGame />
+{#if isDev()}
+	<DrawleGame {roomId} />
 {:else}
 	<div class="flex h-full w-full items-center justify-center">
 		<p class="px-8 text-center text-amber-400 sm:max-w-96 sm:px-0">
