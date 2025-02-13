@@ -13,6 +13,7 @@
 		};
 	};
 	const { data }: Props = $props();
+	const isDev = import.meta.env.MODE === 'development';
 </script>
 
 <svelte:head>
@@ -23,4 +24,8 @@
 	/>
 </svelte:head>
 
-<DrawleGame />
+{#if isDev}
+	<DrawleGame />
+{:else}
+	<p>Drawle is currently under development. Please check back later.</p>
+{/if}
