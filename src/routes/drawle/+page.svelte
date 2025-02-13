@@ -4,6 +4,7 @@
 		type ChampionGuessingGameState,
 		type LolChampion,
 	} from '$lib';
+	import DrawleGame from '$lib/games/drawle/components/DrawleGame.svelte';
 
 	type Props = {
 		data: {
@@ -15,11 +16,11 @@
 </script>
 
 <svelte:head>
-	<title>Chadle | Lollo</title>
+	<title>Drawle | Lollo</title>
 	<meta
 		name="description"
 		content="Your League of Legends after hours gamer hub"
 	/>
 </svelte:head>
 
-<ChampionGuessingGame game={data.game} champions={data.champions} />
+<DrawleGame />

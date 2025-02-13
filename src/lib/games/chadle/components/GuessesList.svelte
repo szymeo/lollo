@@ -51,19 +51,19 @@
 
 <div class="scrollable h-full w-full flex-1 overflow-auto">
 	<div
-		class="sticky top-0 h-14 bg-gradient-to-b from-gray-950 to-transparent"
+		class="sticky top-0 h-2 bg-gradient-to-b from-gray-950 to-transparent sm:h-14"
 	></div>
 
-	<div class="mx-auto flex w-fit max-w-2xl flex-col-reverse gap-2">
+	<div class="mx-auto flex w-fit max-w-2xl flex-col-reverse gap-1 sm:gap-2">
 		{#each guesses as guess}
 			{@const champion = champions.get(guess)!}
 
-			<div class="flex w-fit gap-2 text-center">
+			<div class="flex w-fit gap-1 text-center sm:gap-2">
 				<div
-					class="flex h-20 w-20 shrink-0 items-center justify-center"
+					class="m-auto flex h-10 w-10 shrink-0 items-center justify-center sm:h-20 sm:w-20"
 				>
 					<img
-						class="m-auto h-14 w-14 shrink-0 rounded-lg"
+						class="h-10 w-10 shrink-0 rounded-lg sm:h-14 sm:w-14"
 						src={champion?.avatar}
 						alt={champion?.name}
 					/>
@@ -106,19 +106,19 @@
 
 		{#if guesses.length > 0}
 			<div
-				class="sticky top-0 flex w-fit items-center gap-2 py-2 text-center leading-tight text-white capitalize"
+				class="sticky top-0 flex w-fit items-center gap-1 py-1 text-center text-xs leading-tight text-white capitalize sm:gap-2 sm:py-2 sm:text-base"
 			>
-				<span class="block w-20"></span>
+				<span class="block w-10 sm:w-20"></span>
 				{#each tiles as { key }, i}
-					<span class="block w-20">
+					<span class="block w-12 sm:w-20">
 						{key.replaceAll('_', ' ')}
 					</span>
 				{/each}
-				<span class="block w-20">Release Year</span>
+				<span class="block w-12 sm:w-20">Release Year</span>
 			</div>
 		{/if}
 	</div>
 	<div
-		class="sticky bottom-0 h-14 bg-gradient-to-t from-gray-950 to-transparent"
+		class="sticky bottom-0 h-2 bg-gradient-to-t from-gray-950 to-transparent sm:h-14"
 	></div>
 </div>

@@ -26,7 +26,7 @@
 		easing: circInOut,
 	}}
 	class={[
-		'flex h-20 w-20 flex-col items-center justify-center rounded-xl p-2 font-semibold capitalize hover:opacity-100',
+		'flex h-12 w-12 flex-col items-center justify-center rounded-lg text-xs font-semibold capitalize sm:h-20 sm:w-20 sm:rounded-xl sm:p-2 sm:text-base',
 		{
 			'bg-green-500/35 text-green-500': status === 'green',
 			'bg-red-500/25 text-red-600': status === 'red',

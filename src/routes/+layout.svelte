@@ -8,8 +8,8 @@
 	let { children } = $props();
 
 	const ROUTES = [
-		{ name: 'Champdle', href: '/' },
-		{ name: 'Champrades', href: '/champrades' },
+		{ name: 'Chadle', href: '/' },
+		{ name: 'Drawle', href: '/drawle' },
 		// { name: 'Skilldle', href: '/skilldle' },
 	];
 </script>

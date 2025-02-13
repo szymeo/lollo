@@ -45,9 +45,7 @@
 		class="flex h-full w-full flex-col items-center justify-start overflow-auto"
 	>
 		{#if guesses.length === 0}
-			<div
-				class="z-10 bg-black py-2 text-center font-bold text-amber-400"
-			>
+			<div class="z-10 py-2 text-center font-bold text-amber-400">
 				Who's today's daily challenge champion?
 			</div>
 		{/if}
@@ -66,9 +64,7 @@
 		/>
 
 		{#if has_won_already}
-			<div
-				class="z-10 bg-black py-2 text-center font-bold text-amber-400"
-			>
+			<div class="z-10 py-2 text-center font-bold text-amber-400">
 				You've won today's daily challenge!
 			</div>
 		{/if}
