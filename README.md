@@ -1,4 +1,4 @@
-# Lollo
+# 👑 Lollo
 
 Your League of Legends after hours gamer hub
 

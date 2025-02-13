@@ -13,7 +13,7 @@
 		};
 	};
 	const { data }: Props = $props();
-	const isDev = import.meta.env.MODE === 'development';
+	const isDev = false; //import.meta.env.MODE === 'development';
 </script>
 
 <svelte:head>
@@ -27,5 +27,18 @@
 {#if isDev}
 	<DrawleGame />
 {:else}
-	<p>Drawle is currently under development. Please check back later.</p>
+	<div class="flex h-full w-full items-center justify-center">
+		<p class="px-8 text-center text-amber-400 sm:max-w-96 sm:px-0">
+			Drawle is currently under development.
+			<br />
+			You can check the progress in the
+			<a
+				class="underline"
+				target="_blank"
+				href="https://github.com/szymeo/lollo"
+			>
+				Github repo
+			</a>
+		</p>
+	</div>
 {/if}
