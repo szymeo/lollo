@@ -50,10 +50,6 @@
 </script>
 
 <div class="scrollable h-full w-full flex-1 overflow-auto">
-	<div
-		class="sticky top-0 h-2 bg-gradient-to-b from-gray-950 to-transparent sm:h-14"
-	></div>
-
 	<div class="mx-auto flex w-fit max-w-2xl flex-col-reverse gap-1 sm:gap-2">
 		{#each guesses as guess}
 			{@const champion = champions.get(guess)!}
@@ -106,7 +102,7 @@
 
 		{#if guesses.length > 0}
 			<div
-				class="sticky top-0 flex w-fit items-center gap-1 py-1 text-center text-xs leading-tight text-white capitalize sm:gap-2 sm:py-2 sm:text-base"
+				class="sticky top-0 flex w-fit items-center gap-1 bg-gradient-to-b from-gray-950 to-transparent py-1 text-center text-xs leading-tight text-white capitalize sm:gap-2 sm:py-2 sm:text-base"
 			>
 				<span class="block w-10 sm:w-20"></span>
 				{#each tiles as { key }, i}
