@@ -1,6 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import postcssOKLabFunction from '@csstools/postcss-oklab-function';
 
 export default defineConfig({
 	plugins: [
@@ -26,6 +27,9 @@ export default defineConfig({
 			scss: {
 				api: 'modern-compiler',
 			},
+		},
+		postcss: {
+			plugins: [postcssOKLabFunction],
 		},
 	},
 	build: {
