@@ -59,7 +59,7 @@
 					class="m-auto flex h-10 w-10 shrink-0 items-center justify-center sm:h-20 sm:w-20"
 				>
 					<img
-						class="h-10 w-10 shrink-0 rounded-lg sm:h-14 sm:w-14"
+						class="h-10 w-10 shrink-0 rounded-3xl sm:h-20 sm:w-20"
 						src={champion?.avatar}
 						alt={champion?.name}
 					/>
@@ -104,7 +104,7 @@
 			<div
 				class="sticky top-0 flex w-fit items-center gap-1 bg-gradient-to-b from-gray-950 to-transparent py-1 text-center text-xs leading-tight text-white capitalize sm:gap-2 sm:py-2 sm:text-base"
 			>
-				<span class="block w-10 sm:w-20"></span>
+				<span class="block w-10 sm:w-20">Champion</span>
 				{#each tiles as { key }, i}
 					<span class="block w-12 sm:w-20">
 						{key.replaceAll('_', ' ')}

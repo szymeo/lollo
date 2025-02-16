@@ -15,13 +15,13 @@
 		order = 0,
 		class: class_name = '',
 	}: Props = $props();
-	const DURATION = 1100;
+	const DURATION = 800;
 </script>
 
 <div
 	in:fly|global={{
 		y: 5,
-		delay: order * DURATION * 0.4,
+		delay: order * DURATION * 0.3,
 		duration: DURATION,
 		easing: circInOut,
 	}}

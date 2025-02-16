@@ -15,7 +15,9 @@
 
 	const filtered_autocomplete = $derived.by(() =>
 		autocomplete
-			.filter((r) => r.name.toLowerCase().startsWith(search))
+			.filter((r) =>
+				r.name.toLowerCase().startsWith(search.toLowerCase()),
+			)
 			.slice(0, MAX_RESULTS),
 	);
 

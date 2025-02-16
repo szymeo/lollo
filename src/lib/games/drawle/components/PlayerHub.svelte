@@ -1,9 +1,9 @@
 <script lang="ts">
 	import ArrowUpIcon from '$lib/shared/icons/ArrowUpIcon.svelte';
-	import { type MouseEventHandler } from 'svelte/elements';
+	import { onMount } from 'svelte';
+	import type { MouseEventHandler } from 'svelte/elements';
 	import { fly } from 'svelte/transition';
 	import Skin from './Skin.svelte';
-	import { onMount } from 'svelte';
 
 	const { roomId, onCreate, onJoin } = $props();
 
@@ -24,7 +24,7 @@
 	let skin = $state({
 		color: options.color[0],
 		eyes: options.eyes[0],
-		mouth: options.mouth[0],
+		mouth: options.mouth[1],
 	});
 
 	function changeSkinOption(
@@ -90,7 +90,7 @@
 			y: 5,
 			duration: 100,
 		}}
-		class="mx-auto w-full max-w-md space-y-4 rounded-lg border-gray-700 p-6 sm:w-1/2 sm:border"
+		class="mx-auto w-full max-w-md shrink-0 space-y-4 rounded-lg border-gray-700 p-6 sm:border"
 	>
 		<div class="flex items-center justify-center">
 			<div class="flex h-full flex-col gap-3">

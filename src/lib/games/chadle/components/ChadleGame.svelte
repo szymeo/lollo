@@ -12,6 +12,24 @@
 	const { game, champions }: Props = $props();
 	let guesses = $state<LolChampion['id'][]>([]);
 	let mounted = $state(false);
+	const clues = $derived([
+		{
+			guesses_threshold: 8,
+			clue: `First letter of the champion's name is ${champions.get(game.champion).name.charAt(0)}`,
+		},
+		{
+			guesses_threshold: 12,
+			clue: `Champion is ${champions.get(game.champion).ranged ? 'ranged' : 'melee'}`,
+		},
+		{
+			guesses_threshold: 16,
+			clue: `Champion is from ${champions.get(game.champion).regions.join(', ')}`,
+		},
+		{
+			guesses_threshold: 20,
+			clue: `Champion's resource type is ${champions.get(game.champion).resource_type}`,
+		},
+	]);
 
 	const loadGuesses = () => {
 		const savedGuesses = localStorage.getItem(`guesses-${game.id}`);
@@ -63,10 +81,28 @@
 				.filter((champion) => !guesses.includes(champion.id))}
 		/>
 
+		<div class="z-10 py-2 text-center"></div>
 		{#if has_won_already}
-			<div class="z-10 py-2 text-center font-bold text-amber-400">
+			<div class="font-bold text-amber-400">
 				You've won today's daily challenge!
 			</div>
+		{:else}
+			{@const guesses_left =
+				(clues.find((clue) => guesses.length < clue.guesses_threshold)
+					?.guesses_threshold || 0) - guesses.length}
+			{#if clues.some((clue) => guesses.length >= clue.guesses_threshold)}
+				<div class="font-bold text-amber-400">
+					{#each clues.filter((clue) => guesses.length >= clue.guesses_threshold) as clue}
+						<p class="text-center">{clue.clue}</p>
+					{/each}
+				</div>
+			{/if}
+
+			{#if guesses.length > 0 && guesses_left > 0}
+				<span class="text-xs uppercase">
+					Next clue in {guesses_left} guesses.
+				</span>
+			{/if}
 		{/if}
 
 		<GuessesList {guesses} winning_guess={game.champion} {champions} />

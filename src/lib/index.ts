@@ -1,4 +1,4 @@
-import { default as ChampionGuessingGame } from './games/chadle/components/ChampionGuessingGame.svelte';
+import { default as ChampionGuessingGame } from './games/chadle/components/ChadleGame.svelte';
 
 export { ChampionGuessingGame };
 

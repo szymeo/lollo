@@ -1,30 +1,36 @@
 import type { ChampionGuessingGameState, LolChampion } from '$lib';
 import { riotAPI } from '$lib/shared/api/riot/lol/riot-games-lol.api';
 
+// todo: use response streaming here
 export async function load(): Promise<{
 	champions: Map<LolChampion['id'], LolChampion>;
 	game: ChampionGuessingGameState;
 }> {
-	const champions = await riotAPI.getChampionList();
-	const championsMap = new Map(
-		champions.map((champion) => [champion.id, champion]),
-	);
-	const dayOfYear = getDayOfYear(new Date());
-	const championIds = Array.from(championsMap.keys());
-	const championId = championIds[dayOfYear % championIds.length];
-	const currentYear = new Date().getFullYear();
+	const championsPromise = riotAPI
+		.getChampionList()
+		.then(
+			(champions) =>
+				new Map(champions.map((champion) => [champion.id, champion])),
+		);
+	const date = new Date();
+	const dayOfYear = getDayOfYear(date);
+	const currentYear = date.getFullYear();
+	const gamePromise = championsPromise.then((championsMap) => {
+		const championIds = Array.from(championsMap.keys());
+		const championId = championIds[dayOfYear % championIds.length];
 
-	const game = {
-		id: `daily-${championId}-${dayOfYear}-${currentYear}`,
-		champion: championId,
-		// todo: get tries from database
-		tries: 0,
-		is_daily: true,
-	};
+		return {
+			id: `daily-${championId}-${dayOfYear}-${currentYear}`,
+			champion: championId,
+			tries: 0,
+			is_daily: true,
+		};
+	});
 
 	return {
-		champions: championsMap,
-		game,
+		champions: await championsPromise,
+		// todo: calculate game on the client side and send only stats from the server
+		game: await gamePromise,
 	};
 }
 

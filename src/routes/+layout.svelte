@@ -3,20 +3,26 @@
 	import { page } from '$app/state';
 	import '../app.css';
 	import GithubIcon from '$lib/shared/icons/GithubIcon.svelte';
+	import type { Snippet } from 'svelte';
 
-	/** @type {{children: import('svelte').Snippet}} */
-	let { children } = $props();
+	type Props = {
+		children: Snippet;
+	};
+	let { children }: Props = $props();
 
 	const ROUTES = [
 		{ name: 'Chadle', href: '/' },
 		{ name: 'Drawle', href: '/drawle' },
 		// { name: 'Skilldle', href: '/skilldle' },
+		// { name: '1v1', href: '/1v1' },
 	];
 </script>
 
-<div class="scrollable flex h-dvh flex-col overflow-auto">
+<div
+	class="scrollable flex h-dvh flex-col overflow-auto border-t-4 border-amber-400"
+>
 	<nav
-		class="sticky top-0 z-10 flex items-center justify-between border-t-4 border-amber-400 px-6"
+		class="sticky top-0 z-10 flex w-full items-center justify-between px-6"
 	>
 		<h1
 			class="relative flex w-fit items-center justify-center gap-2 py-4 text-3xl font-extrabold"
